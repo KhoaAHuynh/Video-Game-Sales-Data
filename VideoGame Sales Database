@@ -1,0 +1,30 @@
+#In this SQL I am querying a Video Game Sales database 
+
+#1. What is the name of the lowest selling puzzle game
+SELECT Name, MIN(EU_Sales), MIN(JP_Sales)
+FROM VGSales 
+WHERE Genre = 'Puzzle'
+
+#2. What were the top ten selling Nintendo games in Japan
+SELECT Name, Publisher
+FROM VGSales
+WHERE Publisher = 'Nintendo'
+Order By JP_Sales desc
+Limit 10;
+
+#3. How many games were sold where the publisher is Nintendo? 
+SELECT COUNT(Name)
+FROM VGSales
+WHERE Publisher = 'Nintendo'
+
+#4. Find the games that have a pattern of Pokemon
+SELECT Name, Publisher
+FROM VGSales        
+WHERE Name LIKE 'Pokemon%'
+
+#5. Find the total Global sales of shooter games where the publisher is Activision.
+SELECT SUM(Global_Sales) 
+FROM VGSales
+WHERE Genre = 'Shooter'
+AND Publisher = 'Activision'
+
